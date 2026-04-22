@@ -328,7 +328,6 @@ class PiskvorkyGame
             }
         }
 
-        // Vyber náhodný tah z nejlepších
         return bestMoves[random.Next(bestMoves.Count)];
     }
 
@@ -375,19 +374,16 @@ class PiskvorkyGame
 
     private bool CheckWin(char player)
     {
-        // Řádky
         if ((board[0] == player && board[1] == player && board[2] == player) ||
             (board[3] == player && board[4] == player && board[5] == player) ||
             (board[6] == player && board[7] == player && board[8] == player))
             return true;
 
-        // Sloupce
         if ((board[0] == player && board[3] == player && board[6] == player) ||
             (board[1] == player && board[4] == player && board[7] == player) ||
             (board[2] == player && board[5] == player && board[8] == player))
             return true;
 
-        // Diagonály
         if ((board[0] == player && board[4] == player && board[8] == player) ||
             (board[2] == player && board[4] == player && board[6] == player))
             return true;
@@ -438,7 +434,6 @@ class PiskvorkyGame
 
     private bool IsGameLocked()
     {
-        // Kontrola jestli zbývají volná pole
         bool hasEmptySpace = false;
         for (int i = 0; i < 9; i++)
         {
@@ -449,42 +444,36 @@ class PiskvorkyGame
             }
         }
 
-        // Pokud nema volné pole, není lock
         if (!hasEmptySpace)
             return false;
 
-        // Projděte všechny zbývající pozice a zjistěte, jestli může někdo vyhrát
         for (int i = 0; i < 9; i++)
         {
             if (board[i] == ' ')
             {
-                // Testuj tah pro X
                 board[i] = 'X';
                 if (CanWinFromHere('X'))
                 {
                     board[i] = ' ';
-                    return false; // X může vyhrát
+                    return false; 
                 }
                 board[i] = ' ';
 
-                // Testuj tah pro O
                 board[i] = 'O';
                 if (CanWinFromHere('O'))
                 {
                     board[i] = ' ';
-                    return false; // O může vyhrát
+                    return false; 
                 }
                 board[i] = ' ';
             }
         }
 
-        // Nikdo nemůže vyhrát - hra je zamčená
         return true;
     }
 
     private bool CanWinFromHere(char player)
     {
-        // Kontrola všech možných vyhrávajících kombinací
         int[][] winPatterns = new int[][]
         {
             new int[] {0, 1, 2},
@@ -510,7 +499,6 @@ class PiskvorkyGame
                     emptyCount++;
             }
 
-            // Pokud má hráč 2 v řadě a jedno prázdné místo, může vyhrát
             if (playerCount == 2 && emptyCount == 1)
                 return true;
         }
