@@ -26,4 +26,4 @@ Počítač používá algoritmus **Minimax** — projde všechny možné tahy do
 - **Typ:** Konzolová aplikace
 ## 👤 Autor
  
-Tobiáš Jirgala — (https://github.com/999toby)
+Tobyy — (https://github.com/999toby)
