@@ -1,12 +1,6 @@
 ### Požadavky
 - [.NET SDK](https://dotnet.microsoft.com/download) (verze 6.0 nebo novější)
-### Postup
-```bash
-git clone https://github.com/TVOJE_JMENO/piskvorky.git
-cd piskvorky
-dotnet run
-```
- 
+
 ## 🕹️ Jak hrát
  
 1. Spusť hru a vyber režim (1 = proti AI, 2 = dva hráči)
